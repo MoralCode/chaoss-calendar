@@ -97,27 +97,66 @@ h1 {
   margin: 0 0 12px;
 }
 
-.feed-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 6px 0;
+table.feeds {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.feed-row + .feed-row {
+table.feeds th[scope="col"] {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 0 8px;
+}
+
+table.feeds th[scope="col"]:not(:first-child) {
+  text-align: center;
+}
+
+table.feeds tbody tr + tr {
   border-top: 1px dashed var(--line);
 }
 
-.feed-row code {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 13px;
-  color: var(--ink);
-  word-break: break-all;
+table.feeds th[scope="row"] {
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  padding: 12px 16px 12px 0;
   min-width: 0;
-  flex: 1;
 }
 
-.copy-btn {
+.cal-name {
+  display: block;
+  font-family: "Familjen Grotesk", "Public Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cal-sub {
+  display: block;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+table.feeds td {
+  vertical-align: middle;
+  padding: 12px 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.feeds td + td {
+  padding-left: 8px;
+}
+
+.feed-btn {
   font-family: "Public Sans", sans-serif;
   font-size: 12px;
   font-weight: 600;
@@ -128,6 +167,11 @@ h1 {
   padding: 6px 12px;
   cursor: pointer;
   flex-shrink: 0;
+}
+
+a.feed-btn {
+  display: inline-block;
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -243,7 +287,7 @@ footer {
 </header>
 
 <div class="feed">
-  <p class="feed-label">Calendar feed — iCalendar (ICS, RFC 5545)</p>
+  <p class="feed-label">Calendar feeds — iCalendar (ICS, RFC 5545)</p>
   <div class="feed-row">
     <code id="url-https">https://www.chaoss.community/calendar/wg-software.ics</code>
     <button class="copy-btn" data-copy="https://www.chaoss.community/calendar/wg-software.ics">Copy</button>
