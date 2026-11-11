@@ -288,14 +288,36 @@ footer {
 
 <div class="feed">
   <p class="feed-label">Calendar feeds — iCalendar (ICS, RFC 5545)</p>
-  <div class="feed-row">
-    <code id="url-https">https://www.chaoss.community/calendar/wg-software.ics</code>
-    <button class="copy-btn" data-copy="https://www.chaoss.community/calendar/wg-software.ics">Copy</button>
-  </div>
-  <div class="feed-row">
-    <code>webcal://www.chaoss.community/calendar/wg-software.ics</code>
-    <button class="copy-btn" data-copy="webcal://www.chaoss.community/calendar/wg-software.ics">Copy</button>
-  </div>
+  <table class="feeds">
+    <thead>
+      <tr>
+        <th scope="col">Calendar</th>
+        <th scope="col">macOS · webcal</th>
+        <th scope="col">ICS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          <span class="cal-name">Software</span>
+          <span class="cal-sub">Shared by the Software WG</span>
+        </th>
+        <td><a class="feed-btn" href="webcal://www.chaoss.community/calendar/wg-software.ics">Subscribe</a></td>
+        <td><button class="feed-btn copy-btn" data-copy="https://www.chaoss.community/calendar/wg-software.ics">Copy URL</button></td>
+      </tr>
+      <!-- To add a calendar, copy a <tr> and edit it. The .cal-sub line is
+           optional — leave it out for calendars used by a single WG:
+      <tr>
+        <th scope="row">
+          <span class="cal-name">Example</span>
+          <span class="cal-sub">Shared by the Example and Demo WGs</span>
+        </th>
+        <td><a class="feed-btn" href="webcal://www.chaoss.community/calendar/example.ics">Subscribe</a></td>
+        <td><button class="feed-btn copy-btn" data-copy="https://www.chaoss.community/calendar/example.ics">Copy URL</button></td>
+      </tr>
+      -->
+    </tbody>
+  </table>
   <p class="feed-note">Both addresses serve the same feed. <code>webcal://</code> is just a signal to your browser to hand the link to a calendar app; every app below also accepts the plain <code>https://</code> form. The address redirects once before serving the file — all major clients follow redirects, so paste it as-is.</p>
 </div>
 
