@@ -1,0 +1,373 @@
+<title>Subscribing to the WG Calendar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* Layout: single-column reference doc, ~68ch measure, hairline section dividers,
+   one tinted feed block as the page's focal object. */
+
+:root {
+  --bg: #FAF8F5;
+  --surface: #FFFFFF;
+  --ink: #23262E;
+  --muted: #6B6F7B;
+  --accent: #3A56B4;
+  --accent-ink: #FFFFFF;
+  --tint: #EEF1FA;
+  --line: #E6E1D9;
+  --code-bg: #F1EEE8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15171D;
+    --surface: #1E212A;
+    --ink: #E9E7E2;
+    --muted: #9DA1AD;
+    --accent: #96ACE8;
+    --accent-ink: #10131C;
+    --tint: #1D2233;
+    --line: #2E323D;
+    --code-bg: #1A1D25;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #15171D;
+  --surface: #1E212A;
+  --ink: #E9E7E2;
+  --muted: #9DA1AD;
+  --accent: #96ACE8;
+  --accent-ink: #10131C;
+  --tint: #1D2233;
+  --line: #2E323D;
+  --code-bg: #1A1D25;
+  color-scheme: dark;
+}
+
+body {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  padding-block: 48px 64px;
+}
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: "Familjen Grotesk", "Public Sans", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 10px 0 14px;
+}
+
+.lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* --- feed block --- */
+
+.feed {
+  background: var(--tint);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 32px;
+}
+
+.feed-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.feed-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.feed-row + .feed-row {
+  border-top: 1px dashed var(--line);
+}
+
+.feed-row code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--ink);
+  word-break: break-all;
+  min-width: 0;
+  flex: 1;
+}
+
+.copy-btn {
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy-btn { transition: opacity 120ms ease; }
+}
+
+.copy-btn:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.feed-note {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+/* --- sections --- */
+
+section {
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+  padding-top: 28px;
+}
+
+h2 {
+  font-family: "Familjen Grotesk", "Public Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+h2 .platform {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+section p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+ol.steps {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+
+ol.steps li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+ol.steps li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.guide-link {
+  font-size: 13.5px;
+}
+
+a {
+  color: var(--accent);
+}
+
+.note {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 12px;
+  margin: 12px 0 0;
+}
+
+pre.config {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 12px 0;
+}
+
+pre.config code { color: var(--ink); }
+
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 44px;
+  padding-top: 20px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+</style>
+
+<header>
+  <p class="eyebrow">CHAOSS · Working Group</p>
+  <h1>Subscribe to the WG calendar</h1>
+  <p class="lede">The working group publishes its meeting schedule as a live iCalendar feed. Subscribe once and every schedule change — moved meetings, new sessions, cancellations — lands in your calendar on its own.</p>
+</header>
+
+<div class="feed">
+  <p class="feed-label">Calendar feed — iCalendar (ICS, RFC 5545)</p>
+  <div class="feed-row">
+    <code id="url-https">https://www.chaoss.community/calendar/wg-software.ics</code>
+    <button class="copy-btn" data-copy="https://www.chaoss.community/calendar/wg-software.ics">Copy</button>
+  </div>
+  <div class="feed-row">
+    <code>webcal://www.chaoss.community/calendar/wg-software.ics</code>
+    <button class="copy-btn" data-copy="webcal://www.chaoss.community/calendar/wg-software.ics">Copy</button>
+  </div>
+  <p class="feed-note">Both addresses serve the same feed. <code>webcal://</code> is just a signal to your browser to hand the link to a calendar app; every app below also accepts the plain <code>https://</code> form. The address redirects once before serving the file — all major clients follow redirects, so paste it as-is.</p>
+</div>
+
+<section>
+  <h2>Subscribe, don't import</h2>
+  <p>Opening a downloaded <code>.ics</code> file adds a one-time snapshot: the events land in your calendar, but nothing updates afterward. Subscribing registers the feed's address with your calendar app, which then re-checks it on a schedule. Everything below subscribes.</p>
+</section>
+
+<section>
+  <h2>Google Calendar <span class="platform">web</span></h2>
+  <ol class="steps">
+    <li>Open <a href="https://calendar.google.com/">calendar.google.com</a> and find <em>Other calendars</em> in the left sidebar.</li>
+    <li>Click the <em>+</em> next to it and choose <em>From URL</em>.</li>
+    <li>Paste the <code>https</code> address and click <em>Add calendar</em>. The feed appears under <em>Other calendars</em>.</li>
+  </ol>
+  <p class="note">Google re-checks external feeds roughly once a day, so changes can take up to 24 hours to appear.</p>
+  <p class="guide-link">Official guide: <a href="https://support.google.com/calendar/answer/37100">Google Calendar Help — use a link to add a public calendar</a></p>
+</section>
+
+<section>
+  <h2>Apple Calendar <span class="platform">macOS</span></h2>
+  <ol class="steps">
+    <li>In Calendar, choose <em>File → New Calendar Subscription…</em></li>
+    <li>Paste either address and click <em>Subscribe</em>.</li>
+    <li>In the sheet that follows, set <em>Auto-refresh</em> (from every 5 minutes up to weekly) and click <em>OK</em>.</li>
+  </ol>
+  <p class="guide-link">Official guide: <a href="https://support.apple.com/guide/calendar/welcome/mac">Apple Calendar User Guide</a></p>
+</section>
+
+<section>
+  <h2>iPhone &amp; iPad <span class="platform">iOS / iPadOS</span></h2>
+  <ol class="steps">
+    <li>Open <em>Settings → Calendar → Accounts</em> and tap <em>Add Account</em>.</li>
+    <li>Choose <em>Other → Add Subscribed Calendar</em>.</li>
+    <li>Paste the <code>https</code> address, tap <em>Next</em>, then <em>Save</em>.</li>
+  </ol>
+  <p class="note">Tapping a <code>webcal://</code> link on a web page also offers to subscribe directly.</p>
+  <p class="guide-link">Official guide: <a href="https://support.apple.com/guide/iphone/welcome/ios">iPhone User Guide</a></p>
+</section>
+
+<section>
+  <h2>Outlook <span class="platform">web · Microsoft 365</span></h2>
+  <ol class="steps">
+    <li>Sign in to Outlook on the web and switch to the Calendar view.</li>
+    <li>Click <em>Add calendar → Subscribe from web</em>.</li>
+    <li>Paste the <code>https</code> address, give the calendar a name, and click <em>Save</em>.</li>
+  </ol>
+  <p class="guide-link">Official guide: <a href="https://support.microsoft.com/en-us/office/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web-cff1429c-5af6-41ec-a5b4-74f2c278e98c">Microsoft Support — import or subscribe to a calendar in Outlook.com or Outlook on the web</a></p>
+</section>
+
+<section>
+  <h2>Thunderbird <span class="platform">desktop</span></h2>
+  <ol class="steps">
+    <li>Open the Calendar tab and choose <em>New Calendar…</em></li>
+    <li>Pick <em>On the Network</em> and click <em>Next</em>.</li>
+    <li>Leave the format on iCalendar (ICS), paste the <code>https</code> address, then name the calendar and finish.</li>
+  </ol>
+  <p class="guide-link">Official guide: <a href="https://support.mozilla.org/en-US/kb/creating-new-calendars">Mozilla Support — creating a new calendar</a></p>
+</section>
+
+<section>
+  <h2>GNOME &amp; the terminal <span class="platform">Linux</span></h2>
+  <p>GNOME Calendar can't subscribe to a web feed. On GNOME, use Evolution instead: <em>File → New → Calendar</em>, choose the <em>On the Web</em> type with the iCalendar format, and paste the URL.</p>
+  <p>If you keep your schedule in the terminal, <code>vdirsyncer</code> mirrors the feed to disk and <code>khal</code> reads it. In <code>~/.config/vdirsyncer/config</code>:</p>
+  <pre class="config"><code>[pair wg]
+a = "wg_local"
+b = "wg_remote"
+
+[storage wg_local]
+type = "filesystem"
+path = "~/.calendars/wg/"
+fileext = ".ics"
+
+[storage wg_remote]
+type = "http"
+url = "https://www.chaoss.community/calendar/wg-software.ics"</code></pre>
+  <p>Then run <code>vdirsyncer discover &amp;&amp; vdirsyncer sync</code> (from a cron job or systemd timer to keep it fresh) and point khal at <code>~/.calendars/wg/</code>.</p>
+</section>
+
+<section>
+  <h2>If events don't show up</h2>
+  <ol class="steps">
+    <li>Check that you pasted the full address, with no trailing space after <code>.ics</code>.</li>
+    <li>Confirm the new calendar is toggled visible in your app's calendar list.</li>
+    <li>Wait out the sync interval — Apple follows the auto-refresh you picked, Google checks about once a day, and Outlook and Thunderbird re-fetch on their own schedules.</li>
+  </ol>
+</section>
+
+<footer>
+  New to CHAOSS? The <a href="https://chaoss.community/kb-getting-started/">getting-started page</a> covers joining the Slack workspace, where the working group coordinates between meetings.
+</footer>
+
+<script>
+(function () {
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy");
+      var done = function () {
+        var old = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = old; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {
+          // fallback: select the adjacent code text so the viewer can copy manually
+          var code = btn.parentElement.querySelector("code");
+          if (code) {
+            var range = document.createRange();
+            range.selectNodeContents(code);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        });
+      }
+    });
+  });
+})();
+</script>
