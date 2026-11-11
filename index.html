@@ -1,3 +1,6 @@
+---
+---
+
 <title>Subscribing to the WG Calendar</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="./style.css">
@@ -19,14 +22,16 @@
       </tr>
     </thead>
     <tbody>
+      {% for feed in site.data.feeds %}
       <tr>
         <th scope="row">
-          <span class="cal-name">Software</span>
-          <span class="cal-sub">Shared by the Software WG</span>
+          <span class="cal-name">{{feed.name}}</span>
+          <span class="cal-sub">{{feed.subtitle}}</span>
         </th>
-        <td><a class="feed-btn" href="webcal://www.chaoss.community/calendar/wg-software.ics">Subscribe</a></td>
-        <td><button class="feed-btn copy-btn" data-copy="https://www.chaoss.community/calendar/wg-software.ics">Copy URL</button></td>
+        <td><a class="feed-btn" href="webcal://{{feed.feed_url}}">Subscribe</a></td>
+        <td><button class="feed-btn copy-btn" data-copy="https://{{feed.feed_url}}">Copy URL</button></td>
       </tr>
+      {% endfor %}
       <!-- To add a calendar, copy a <tr> and edit it. The .cal-sub line is
            optional — leave it out for calendars used by a single WG:
       <tr>
