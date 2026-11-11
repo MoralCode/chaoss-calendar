@@ -420,18 +420,22 @@ url = "https://www.chaoss.community/calendar/wg-software.ics"</code></pre>
         btn.textContent = "Copied";
         setTimeout(function () { btn.textContent = old; }, 1500);
       };
+      var fallback = function () {
+        // legacy fallback for browsers without the async clipboard API
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () {
-          // fallback: select the adjacent code text so the viewer can copy manually
-          var code = btn.parentElement.querySelector("code");
-          if (code) {
-            var range = document.createRange();
-            range.selectNodeContents(code);
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-          }
-        });
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
       }
     });
   });
