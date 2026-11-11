@@ -53,8 +53,11 @@
   <p>Opening a downloaded <code>.ics</code> file adds a one-time snapshot: the events land in your calendar, but nothing updates afterward. Subscribing registers the feed's address with your calendar app, which then re-checks it on a schedule. Everything below subscribes.</p>
 </section>
 
-<section>
-  <h2>Google Calendar <span class="platform">web</span></h2>
+<details class="app">
+  <summary>
+    <h2>Google Calendar <span class="platform">web</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <ol class="steps">
     <li>Open <a href="https://calendar.google.com/">calendar.google.com</a> and find <em>Other calendars</em> in the left sidebar.</li>
     <li>Click the <em>+</em> next to it and choose <em>From URL</em>.</li>
@@ -62,20 +65,26 @@
   </ol>
   <p class="note">Google re-checks external feeds roughly once a day, so changes can take up to 24 hours to appear.</p>
   <p class="guide-link">Official guide: <a href="https://support.google.com/calendar/answer/37100">Google Calendar Help — use a link to add a public calendar</a></p>
-</section>
+</details>
 
-<section>
-  <h2>Apple Calendar <span class="platform">macOS</span></h2>
+<details class="app">
+  <summary>
+    <h2>Apple Calendar <span class="platform">macOS</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <ol class="steps">
     <li>In Calendar, choose <em>File → New Calendar Subscription…</em></li>
     <li>Paste either address and click <em>Subscribe</em>.</li>
     <li>In the sheet that follows, set <em>Auto-refresh</em> (from every 5 minutes up to weekly) and click <em>OK</em>.</li>
   </ol>
   <p class="guide-link">Official guide: <a href="https://support.apple.com/guide/calendar/welcome/mac">Apple Calendar User Guide</a></p>
-</section>
+</details>
 
-<section>
-  <h2>iPhone &amp; iPad <span class="platform">iOS / iPadOS</span></h2>
+<details class="app">
+  <summary>
+    <h2>iPhone &amp; iPad <span class="platform">iOS / iPadOS</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <ol class="steps">
     <li>Open <em>Settings → Calendar → Accounts</em> and tap <em>Add Account</em>.</li>
     <li>Choose <em>Other → Add Subscribed Calendar</em>.</li>
@@ -83,30 +92,39 @@
   </ol>
   <p class="note">Tapping a <code>webcal://</code> link on a web page also offers to subscribe directly.</p>
   <p class="guide-link">Official guide: <a href="https://support.apple.com/guide/iphone/welcome/ios">iPhone User Guide</a></p>
-</section>
+</details>
 
-<section>
-  <h2>Outlook <span class="platform">web · Microsoft 365</span></h2>
+<details class="app">
+  <summary>
+    <h2>Outlook <span class="platform">web · Microsoft 365</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <ol class="steps">
     <li>Sign in to Outlook on the web and switch to the Calendar view.</li>
     <li>Click <em>Add calendar → Subscribe from web</em>.</li>
     <li>Paste the <code>https</code> address, give the calendar a name, and click <em>Save</em>.</li>
   </ol>
   <p class="guide-link">Official guide: <a href="https://support.microsoft.com/en-us/office/import-or-subscribe-to-a-calendar-in-outlook-com-or-outlook-on-the-web-cff1429c-5af6-41ec-a5b4-74f2c278e98c">Microsoft Support — import or subscribe to a calendar in Outlook.com or Outlook on the web</a></p>
-</section>
+</details>
 
-<section>
-  <h2>Thunderbird <span class="platform">desktop</span></h2>
+<details class="app">
+  <summary>
+    <h2>Thunderbird <span class="platform">desktop</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <ol class="steps">
     <li>Open the Calendar tab and choose <em>New Calendar…</em></li>
     <li>Pick <em>On the Network</em> and click <em>Next</em>.</li>
     <li>Leave the format on iCalendar (ICS), paste the <code>https</code> address, then name the calendar and finish.</li>
   </ol>
   <p class="guide-link">Official guide: <a href="https://support.mozilla.org/en-US/kb/creating-new-calendars">Mozilla Support — creating a new calendar</a></p>
-</section>
+</details>
 
-<section>
-  <h2>GNOME &amp; the terminal <span class="platform">Linux</span></h2>
+<details class="app">
+  <summary>
+    <h2>GNOME &amp; the terminal <span class="platform">Linux</span></h2>
+    <span class="chevron" aria-hidden="true"></span>
+  </summary>
   <p>GNOME Calendar can't subscribe to a web feed. On GNOME, use Evolution instead: <em>File → New → Calendar</em>, choose the <em>On the Web</em> type with the iCalendar format, and paste the URL.</p>
   <p>If you keep your schedule in the terminal, <code>vdirsyncer</code> mirrors the feed to disk and <code>khal</code> reads it. In <code>~/.config/vdirsyncer/config</code>:</p>
   <pre class="config"><code>[pair wg]
@@ -122,7 +140,7 @@ fileext = ".ics"
 type = "http"
 url = "https://www.chaoss.community/calendar/wg-software.ics"</code></pre>
   <p>Then run <code>vdirsyncer discover &amp;&amp; vdirsyncer sync</code> (from a cron job or systemd timer to keep it fresh) and point khal at <code>~/.calendars/wg/</code>.</p>
-</section>
+</details>
 
 <section>
   <h2>If events don't show up</h2>
