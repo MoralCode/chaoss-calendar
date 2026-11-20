@@ -1,3 +1,49 @@
-- name: Software
-  subtitle: Used by the CollectOSS/8Knot WG
+- name: Software Working Group
+  subtitle: Used by the CollectOSS/8Knot Working Group
+  type: working-group
   feed_url: www.chaoss.community/calendar/wg-software.ics
+- name: CHAOSS Africa Chapter
+  subtitle:
+  feed_url: www.chaoss.community/calendar/chaoss-africa.ics
+  type: chapter
+- name: CHAOSS Asia Chapter
+  subtitle:
+  feed_url: www.chaoss.community/calendar/chaoss-asia.ics
+  type: chapter
+- name: Package Metadata Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-package-metadata.ics
+  type: working-group
+- name: UN-SDG Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-un-sdg.ics
+  type: working-group
+- name: Data Science Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-data-science.ics
+  type: working-group
+- name: AI Alignment Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-ai-alignment.ics
+  type: working-group
+- name: CHAOSS Community
+  subtitle:
+  feed_url: www.chaoss.community/calendar/community.ics
+- name: Funding Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-funding-impact.ics
+  type: working-group
+- name: Education Project
+  subtitle:
+  feed_url: www.chaoss.community/calendar/project-education.ics
+- name: CHAOSS Operations
+  subtitle:
+  feed_url: www.chaoss.community/calendar/operations.ics
+- name: DEI Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-disability-inclusion-accessibility.ics
+  type: working-group
+- name: OSPO Working Group
+  subtitle:
+  feed_url: www.chaoss.community/calendar/wg-ospo.ics
+  type: working-group
